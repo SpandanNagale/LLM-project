@@ -8,10 +8,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-os.environ['LANGCHAIN_API_KEY']=os.getenv("LANGCHAIN_API_KEY")
-os.environ['LANGCHAIN_TRACING_V2']="true"
-os.environ['LANGCHAIN_PROJECT_NAME']="Debugging Chatbot"
-
 prompts=ChatPromptTemplate.from_messages(
     [
         ("system","hey you have been very helpful for coding so please help user with this code , first understand the full code given by the user and then see what the what is the error provided by user and solve this error to your fullest capacity "),
