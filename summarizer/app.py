@@ -11,7 +11,13 @@ from langchain.chains import LLMChain
 
 st.title("Summarizing tool")
 st.sidebar.title("settings")
-api_key=st.sidebar.text_input("Enter your Groq API key:",type="password")
+
+
+# Automatically load from Streamlit Cloud secrets
+api_key = st.secrets.get("groq_api_key", "")
+# In local mode, fallback to sidebar input
+if "groq_api_key" not in st.secrets:
+    api_key = st.sidebar.text_input("Groq API Key", type="password")
 
 if api_key :
     text = st.text_input("Input Text", placeholder="Enter text which needs to be summarized")
